@@ -11,5 +11,8 @@
   "ports": {
     "8492/tcp": 8492
   },
-  "full_access": true
+  "devices": ["/dev/spidev0.0", "/dev/spidev0.1", "/dev/gpiomem"],
+  "privileged": ["SYS_RAWIO"],
+  "full_access": true,
+  "gpio": true
 }

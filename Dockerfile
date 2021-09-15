@@ -3,17 +3,23 @@ FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
 
-#    musl \
-#   musl-dev \
-
 RUN apk add --no-cache --virtual .build-deps \
     python3-dev \
     gcc \
     make \
     linux-headers \
+    musl \
+    musl-dev \
     libc-dev \
- && apk add --no-cache python3 \
- && apk del .build-deps
+    py3-pip \
+ && apk add --no-cache \
+    python3 \
+ && pip install wheel \
+ && CFLAGS="-fcommon" pip install RPi.GPIO \
+ && pip install spidev \
+ && pip install pi-plates
+
+# && apk del .build-deps
 
 #RUN pip install pi-plates
 
