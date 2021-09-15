@@ -1,6 +1,6 @@
 {
   "name": "Pi Plates",
-  "version": "2",
+  "version": "10",
   "slug": "pi_plates",
   "description": "Interace with Relay Boards from pi-plates.com",
   "arch": ["aarch64"],
@@ -11,8 +11,5 @@
   "ports": {
     "8492/tcp": 8492
   },
-  "devices": ["/dev/spidev0.0", "/dev/spidev0.1", "/dev/gpiomem"],
-  "privileged": ["SYS_RAWIO"],
-  "full_access": true,
-  "gpio": true
+  "devices": ["/dev/spidev0.1", "/dev/gpiomem"]
 }

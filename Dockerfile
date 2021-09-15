@@ -13,16 +13,15 @@ RUN apk add --no-cache --virtual .build-deps \
     libc-dev \
     py3-pip \
  && apk add --no-cache \
+    py3-six \
     python3 \
  && pip install wheel \
  && CFLAGS="-fcommon" pip install RPi.GPIO \
- && pip install spidev \
- && pip install pi-plates
+ && CFLAGS="-fcommon" pip install spidev \
+ && pip install pi-plates \
+ && apk del .build-deps
 
-# && apk del .build-deps
-
-#RUN pip install pi-plates
-
+COPY relay_server.py http_server.py /
 COPY run.sh /
 RUN chmod a+x /run.sh
 
